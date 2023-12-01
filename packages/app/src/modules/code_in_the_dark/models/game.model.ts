@@ -26,6 +26,7 @@ export class GameModel {
   private _fullTime: number = 0;
   private _timerInterval: NodeJS.Timeout | null = null;
   private _score: number = 0;
+  private _level: number = 0;
   private _code: string = START_CODE;
   private _challengeConfig: IChallengeConfig = challengesConfig[0];
 
@@ -34,6 +35,10 @@ export class GameModel {
 
   get challengeConfig(): IChallengeConfig {
     return this._challengeConfig;
+  }
+
+  get level(): number {
+    return this._level;
   }
 
   get score(): number {
@@ -68,6 +73,13 @@ export class GameModel {
     return this._code;
   }
 
+  set level(level: number) {
+    if(level <= 5) {
+      this._level = level;
+      this.localStorageRepository.setKey("level", level.toString());
+    }
+  }
+
   constructor(
     @inject(LocalStorageRepository)
     private localStorageRepository: LocalStorageRepository,
@@ -79,6 +91,7 @@ export class GameModel {
     this._gameStart = true;
     this._userName = param.userName;
     this._timer = 0;
+    this._level = 0;
     this._fullTime = param.time;
     this._gameFinish = false;
     this._progressTicker = this._timer * TICK;
@@ -86,6 +99,7 @@ export class GameModel {
     this.localStorageRepository.setKey("gameTimer", param.time.toString());
     this.localStorageRepository.setKey("score", 0);
     this.localStorageRepository.setKey("code", this._code);
+    this.localStorageRepository.setKey("level", this._level);
     this.localStorageRepository.setKey("gameStarted", "true");
     this.localStorageRepository.setKey("finish", this._gameFinish.toString());
   }
@@ -122,6 +136,7 @@ export class GameModel {
       if (this._progressTicker <= 0 && this._timerInterval) {
         runInAction(() => {
           this._score = 0;
+          this.level = 0;
           this.localStorageRepository.setKey("score", 0);
           this._progressTicker = 0;
         });
@@ -155,6 +170,7 @@ export class GameModel {
     this._code = code;
     this.localStorageRepository.setKey("code", code);
 
+
     runInAction(() => {
       this._timer = this._fullTime;
       this._progressTicker = this._fullTime * TICK;
@@ -164,6 +180,7 @@ export class GameModel {
   updateScore(score: number) {
     this._score = score;
     this.localStorageRepository.setKey("score", score.toString());
+    this.level = Math.floor(score / 50)
   }
 
   setChallenge(challengeConfig: IChallengeConfig) {
@@ -186,6 +203,7 @@ export class GameModel {
     this.localStorageRepository.removeKey("gameTimer");
     this.localStorageRepository.removeKey("gameStarted");
     this.localStorageRepository.removeKey("code");
+    this.localStorageRepository.removeKey("level");
     this.localStorageRepository.removeKey("finish");
     if (this._timerInterval) {
       clearInterval(this._timerInterval);

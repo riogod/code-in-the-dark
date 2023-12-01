@@ -6,6 +6,10 @@ import { challengesConfig, IChallengeConfig } from "../../../data/config.ts";
 
 @injectable()
 export class GameViewModel {
+
+  get level(): number {
+    return this.gameModel.level;
+  }
   get challengeConfig(): IChallengeConfig {
     return this.gameModel.challengeConfig;
   }

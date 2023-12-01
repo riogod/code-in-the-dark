@@ -26,10 +26,14 @@ const RegisterScreen: FC = () => {
 
   const onEnterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      gameVM.gameStart(value);
-      router.navigate("game");
+      startHandler()
     }
   };
+
+  const startHandler = () => {
+      gameVM.gameStart(value);
+      router.navigate("game");
+  }
 
   const welcomMessage = (
     <>
@@ -55,12 +59,18 @@ const RegisterScreen: FC = () => {
       sx={{
         width: 1,
         p: 5,
-        minHeight: 450,
+        minHeight: 350,
         display: "flex",
         flexDirection: "column",
         justifyContent: "start",
         alignItems: "center",
-        backgroundColor: "transparent",
+        backgroundColor: 'rgba(16, 20, 24, 0.95)',
+          borderRadius: 0,
+          // border: '16px solid #F62DDC',
+          borderWidth: 20,
+          borderStyle: 'solid',
+          borderImage: ' linear-gradient(45deg, slateblue, coral) ',
+          boxShadow: '4px 4px 20px 10px rgba(0, 0, 0, 0.5) inset'
       }}
     >
       <CardContent>
@@ -78,7 +88,7 @@ const RegisterScreen: FC = () => {
               fontFamily: "PressStart2P-Regular",
             },
             endAdornment: (
-              <InputAdornment position="start">
+              <InputAdornment position="start" onClick={startHandler}>
                 <KeyReturnSVG
                   style={{
                     width: 90,
