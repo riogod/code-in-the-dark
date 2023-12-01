@@ -25,6 +25,7 @@ input:-webkit-autofill:active {
 .code-mirror {
     font-family: Arial, monospace;
     font-size: 24px;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 .ͼ1.cm-focused {
