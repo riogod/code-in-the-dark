@@ -11,9 +11,12 @@ import Reference from "./components/Reference.tsx";
 const GamePage: FC = () => {
   const gameVM = useVM<GameViewModel>(GameViewModel);
 
-  const onChange = useCallback((val: any, _viewUpdate: any) => {
-    gameVM.update(val);
-  }, []);
+  const onChange = useCallback(
+    (val: any, _viewUpdate: any) => {
+      gameVM.update(val);
+    },
+    [gameVM],
+  );
 
   const theme = draculaInit({
     settings: {
@@ -43,7 +46,6 @@ const GamePage: FC = () => {
         onChange={onChange}
       />
       <Box sx={{ position: "fixed", bottom: 0, right: 0 }}>
-        {" "}
         <Reference />
       </Box>
     </Box>

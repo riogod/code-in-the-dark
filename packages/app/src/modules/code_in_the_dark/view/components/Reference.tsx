@@ -9,7 +9,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { GameViewModel } from "../../viewmodels/game.vm.ts";
 import { useVM } from "../../../../ui/hooks/useVM.ts";
-import { useRouter } from "react-router5";
+import FinishButton from "./FinishButton.tsx";
 
 const style = {
   position: "absolute",
@@ -40,7 +40,6 @@ const styleRef = {
 
 const Reference: FC = () => {
   const gameVM = useVM<GameViewModel>(GameViewModel);
-  const router = useRouter();
 
   const [openInstruction, setOpenInstruction] = useState(false);
   const [openReference, setOpenReference] = useState(false);
@@ -50,9 +49,6 @@ const Reference: FC = () => {
   const handleOpenReference = () => setOpenReference(true);
   const handleCloseReference = () => setOpenReference(false);
 
-  const finish = () => {
-    router.navigate("result");
-  };
   const modalInstruction = (
     <Modal open={openInstruction} onClose={handleCloseInstruction}>
       <Box sx={style}>
@@ -114,23 +110,7 @@ const Reference: FC = () => {
             ИНСТРУКЦИЯ
           </Typography>
         </Button>
-        <Button
-          variant="contained"
-          sx={{ ml: 1 }}
-          color="success"
-          onClick={finish}
-        >
-          <Typography
-            sx={{
-              fontFamily: "PressStart2P-Regular",
-              fontSize: 18,
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            ГОТОВО!
-          </Typography>
-        </Button>
+        <FinishButton />
       </Box>
       {modalInstruction}
       {modalReference}
