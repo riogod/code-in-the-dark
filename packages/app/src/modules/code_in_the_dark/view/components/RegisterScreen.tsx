@@ -1,0 +1,103 @@
+import { ChangeEvent, FC, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useVM } from "../../../../ui/hooks/useVM.ts";
+import { GameViewModel } from "../../viewmodels/game.vm.ts";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import { useTranslation } from "react-i18next";
+import TextField from "@mui/material/TextField";
+import KeyReturnSVG from "../../assets/key-return.svg?react";
+import { InputAdornment } from "@mui/material";
+import { useRouter } from "react-router5";
+
+const RegisterScreen: FC = () => {
+  const gameVM = useVM<GameViewModel>(GameViewModel);
+  const router = useRouter();
+
+  const [value, setValue] = useState("");
+
+  const { t } = useTranslation("api");
+
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value.toUpperCase());
+  };
+
+  const onEnterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      gameVM.gameStart(value);
+      router.navigate("game");
+    }
+  };
+
+  const welcomMessage = (
+    <>
+      <Typography
+        sx={{
+          fontFamily: "PressStart2P-Regular",
+          fontSize: 45,
+          w: 1,
+          display: "flex",
+          justifyContent: "center",
+          mb: 10,
+          textShadow:
+            "-5px 5px 0px #09AEC8, -10px 10px 0px #01cccc, -15px 15px 0px #00bdbd",
+        }}
+      >
+        {t("user.enter-name")}
+      </Typography>
+    </>
+  );
+
+  return (
+    <Card
+      sx={{
+        width: 1,
+        p: 5,
+        minHeight: 450,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "center",
+        backgroundColor: "transparent",
+      }}
+    >
+      <CardContent>
+        {welcomMessage}
+        <TextField
+          fullWidth
+          id="filled-start-adornment"
+          autoFocus
+          value={value}
+          onChange={onChangeHandler}
+          onKeyDown={onEnterHandler}
+          InputProps={{
+            style: {
+              fontSize: 60,
+              fontFamily: "PressStart2P-Regular",
+            },
+            endAdornment: (
+              <InputAdornment position="start">
+                <KeyReturnSVG
+                  style={{
+                    width: 90,
+                    height: 90,
+                    opacity: value ? 1 : 0.1,
+                    fill: "#F62DDC",
+                    filter: "drop-shadow(13px 15px 12px rgb(0 0 0 / 0.7))",
+                    cursor: value ? "pointer" : "default",
+                  }}
+                />
+              </InputAdornment>
+            ),
+          }}
+          variant="standard"
+        />
+      </CardContent>
+      <CardActions></CardActions>
+    </Card>
+  );
+};
+
+export default observer(RegisterScreen);

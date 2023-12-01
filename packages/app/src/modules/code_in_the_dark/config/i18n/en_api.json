@@ -1,0 +1,8 @@
+{
+  "menu": {
+    "api": "API example"
+  },
+  "user": {
+    "enter-name": "Enter your name, hero!"
+  }
+}
