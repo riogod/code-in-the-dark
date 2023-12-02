@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   plugins: [react(), svgr()],
   build: {
-    outDir: '../../dist',
+    outDir: "../../dist",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,
@@ -22,6 +22,7 @@ export default defineConfig({
           inversify: ["inversify", "inversify-binding-decorators"],
           mobx: ["mobx", "mobx-react-lite"],
           codemirror: ["@uiw/react-codemirror"],
+          lottie: ["lottie-react"],
         },
       },
     },

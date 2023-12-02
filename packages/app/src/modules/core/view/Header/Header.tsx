@@ -11,6 +11,8 @@ import Divider from "@mui/material/Divider";
 import { useVM } from "../../../../ui/hooks/useVM.ts";
 import { GameViewModel } from "../../../code_in_the_dark/viewmodels/game.vm.ts";
 import ComunityLogoImage from "../../assets/comunity-logo.svg?react";
+import UsernameHeader from "../../../code_in_the_dark/view/components/UsernameHeader.tsx";
+import LevelsHeader from "../../../code_in_the_dark/view/components/LevelsHeader.tsx";
 
 const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
   const { t } = useTranslation("common");
@@ -27,13 +29,6 @@ const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
         <ComunityLogoImage height="50" width="150" />
         {!gameVM.start && (
           <>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            ></Box>
             <Box>
               {!gameVM.start && (
                 <IconButton
@@ -47,6 +42,12 @@ const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
                 />
               )}
             </Box>
+          </>
+        )}
+        {gameVM.start && (
+          <>
+            <LevelsHeader />
+            <UsernameHeader />
           </>
         )}
       </Toolbar>
