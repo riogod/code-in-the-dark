@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { useVM } from "../../../../ui/hooks/useVM.ts";
 import { GameViewModel } from "../../../code_in_the_dark/viewmodels/game.vm.ts";
+import ComunityLogoImage from "../../assets/comunity-logo.svg?react";
 
 const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
   const { t } = useTranslation("common");
@@ -23,6 +24,7 @@ const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
           justifyContent: "space-between",
         }}
       >
+        <ComunityLogoImage height="50" width="150" />
         {!gameVM.start && (
           <>
             <Box

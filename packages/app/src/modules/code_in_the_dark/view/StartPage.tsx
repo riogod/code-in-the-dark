@@ -4,6 +4,7 @@ import RegisterScreen from "./components/RegisterScreen.tsx";
 import { GameViewModel } from "../viewmodels/game.vm.ts";
 import { useVM } from "../../../ui/hooks/useVM.ts";
 import { useRouter } from "react-router5";
+import MeetupHeader from "./components/MeetupHeader.tsx";
 
 const StartPage: FC = () => {
   const gameVM = useVM<GameViewModel>(GameViewModel);
@@ -23,6 +24,7 @@ const StartPage: FC = () => {
         alignItems: "center",
       }}
     >
+      <MeetupHeader />
       <RegisterScreen />
     </Container>
   );
