@@ -17,7 +17,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 800,
-  minHeight: 600,
+  minHeight: 400,
   maxHeight: 700,
   backgroundColor: "background.paper",
   border: "2px solid #000",
@@ -31,11 +31,12 @@ const styleRef = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  minHeight: "auto",
+  minHeight: 200,
   backgroundColor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   overflow: "auto",
+  p: 2,
 };
 
 const Reference: FC = () => {
@@ -50,7 +51,11 @@ const Reference: FC = () => {
   const handleCloseReference = () => setOpenReference(false);
 
   const modalInstruction = (
-    <Modal open={openInstruction} onClose={handleCloseInstruction}>
+    <Modal
+      open={openInstruction}
+      onClose={handleCloseInstruction}
+      disableAutoFocus
+    >
       <Box sx={style}>
         <Box
           sx={{
@@ -71,7 +76,7 @@ const Reference: FC = () => {
   );
 
   const modalReference = (
-    <Modal open={openReference} onClose={handleCloseReference}>
+    <Modal open={openReference} onClose={handleCloseReference} disableAutoFocus>
       <Box sx={styleRef}>
         <img
           src={gameVM.challengeConfig.reference}
