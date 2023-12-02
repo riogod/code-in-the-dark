@@ -74,7 +74,7 @@ export class GameModel {
   }
 
   set level(level: number) {
-    if(level <= 5) {
+    if (level <= 5) {
       this._level = level;
       this.localStorageRepository.setKey("level", level.toString());
     }
@@ -113,6 +113,8 @@ export class GameModel {
 
     this._timer =
       Number(this.localStorageRepository.getKey<number>("gameTimer")) || 0;
+    this.level =
+      Number(this.localStorageRepository.getKey<number>("level")) || 0;
     this._code = this.localStorageRepository.getKey<string>("code") || "";
     this._score =
       Number(this.localStorageRepository.getKey<number>("score")) || 0;
@@ -170,7 +172,6 @@ export class GameModel {
     this._code = code;
     this.localStorageRepository.setKey("code", code);
 
-
     runInAction(() => {
       this._timer = this._fullTime;
       this._progressTicker = this._fullTime * TICK;
@@ -180,7 +181,7 @@ export class GameModel {
   updateScore(score: number) {
     this._score = score;
     this.localStorageRepository.setKey("score", score.toString());
-    this.level = Math.floor(score / 50)
+    this.level = Math.floor(score / 50);
   }
 
   setChallenge(challengeConfig: IChallengeConfig) {
