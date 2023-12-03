@@ -26,7 +26,7 @@ const ResultPage: FC<{ children?: ReactNode }> = ({ children }) => {
     styleElement.setAttribute("type", "text/css");
     styleElement.textContent = `
                 body:before {
-                  content: "dwed";
+                  content: "";
                    position: absolute;
                   width: 100%;
                   height: 100%;
