@@ -1,5 +1,5 @@
-import SberConfig from "./sber/config";
-import GitHubConfig from "./github/config";
+import BigButtonConfig from "./button/config";
+import BannerConfig from "./banner/config";
 
 export interface IChallengeConfig {
   name: string;
@@ -8,4 +8,7 @@ export interface IChallengeConfig {
   asserts?: string[];
 }
 
-export const challengesConfig: IChallengeConfig[] = [SberConfig, GitHubConfig];
+export const challengesConfig: IChallengeConfig[] = [
+  BigButtonConfig,
+  BannerConfig,
+];

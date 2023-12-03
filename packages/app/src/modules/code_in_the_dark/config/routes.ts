@@ -49,5 +49,12 @@ export const routes: IRoutes = [
     menu: {
       text: "result",
     },
+    onEnter: (router, _fs, ts) => {
+      const di = router.getDependencies().di as Container;
+      const model = di.get<GameModel>(GameModel);
+      if (!ts) {
+        model.gameUpdate();
+      }
+    },
   },
 ];

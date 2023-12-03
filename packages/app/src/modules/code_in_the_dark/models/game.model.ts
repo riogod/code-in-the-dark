@@ -10,6 +10,10 @@ const START_CODE =
   "<html>\n" +
   "  <head>\n" +
   '    <style type="text/css">\n' +
+  "       body {\n" +
+  "          padding: 0;\n" +
+  "          margin: 0;\n" +
+  "       }\n" +
   "    </style>\n" +
   "  </head>\n" +
   "  <body>\n" +
@@ -74,7 +78,7 @@ export class GameModel {
   }
 
   set level(level: number) {
-    if(level <= 5) {
+    if (level <= 5) {
       this._level = level;
       this.localStorageRepository.setKey("level", level.toString());
     }
@@ -85,6 +89,16 @@ export class GameModel {
     private localStorageRepository: LocalStorageRepository,
   ) {
     makeAutoObservable(this);
+    const challengeName = this.localStorageRepository.getKey("challenge");
+
+    if (challengeName) {
+      const challengeConfig = challengesConfig.find(
+        (c) => c.name === challengeName,
+      );
+      if (challengeConfig) {
+        this.setChallenge(challengeConfig);
+      }
+    }
   }
 
   gameStart(param: GameSetup) {
@@ -95,6 +109,7 @@ export class GameModel {
     this._fullTime = param.time;
     this._gameFinish = false;
     this._progressTicker = this._timer * TICK;
+    this.setChallenge(this.challengeConfig);
     this.localStorageRepository.setKey("userName", param.userName);
     this.localStorageRepository.setKey("gameTimer", param.time.toString());
     this.localStorageRepository.setKey("score", 0);
@@ -108,11 +123,12 @@ export class GameModel {
     const started = this.isTrueFromString(
       this.localStorageRepository.getKey<string>("gameStarted"),
     );
-
     this._gameStart = started || false;
 
     this._timer =
       Number(this.localStorageRepository.getKey<number>("gameTimer")) || 0;
+    this.level =
+      Number(this.localStorageRepository.getKey<number>("level")) || 0;
     this._code = this.localStorageRepository.getKey<string>("code") || "";
     this._score =
       Number(this.localStorageRepository.getKey<number>("score")) || 0;
@@ -125,6 +141,17 @@ export class GameModel {
       this.localStorageRepository.getKey<string>("finish"),
     );
     this._progressTicker = this._timer * TICK;
+
+    const challengeName = this.localStorageRepository.getKey("challenge");
+
+    if (challengeName) {
+      const challengeConfig = challengesConfig.find(
+        (c) => c.name === challengeName,
+      );
+      if (challengeConfig) {
+        this.setChallenge(challengeConfig);
+      }
+    }
 
     if (started && !this._gameFinish) {
       this.startTimer();
@@ -170,7 +197,6 @@ export class GameModel {
     this._code = code;
     this.localStorageRepository.setKey("code", code);
 
-
     runInAction(() => {
       this._timer = this._fullTime;
       this._progressTicker = this._fullTime * TICK;
@@ -180,11 +206,12 @@ export class GameModel {
   updateScore(score: number) {
     this._score = score;
     this.localStorageRepository.setKey("score", score.toString());
-    this.level = Math.floor(score / 50)
+    this.level = Math.floor(score / 50);
   }
 
   setChallenge(challengeConfig: IChallengeConfig) {
     this._challengeConfig = challengeConfig;
+    this.localStorageRepository.setKey("challenge", this.challengeConfig.name);
   }
 
   private isTrueFromString(value: string): boolean {

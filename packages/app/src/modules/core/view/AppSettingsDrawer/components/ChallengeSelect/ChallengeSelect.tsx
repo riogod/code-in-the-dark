@@ -12,7 +12,7 @@ const ChallengeSelect: FC = () => {
   const { t } = useTranslation("common");
   const gameVM = useVM<GameViewModel>(GameViewModel);
 
-  const handleLanguageChange = async (
+  const handleLanguageChange = (
     _event: SyntheticEvent<Element, Event>,
     newValue: string,
   ) => {

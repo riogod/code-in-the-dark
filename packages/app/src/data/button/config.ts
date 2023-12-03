@@ -1,9 +1,9 @@
 import txt from "./data.md?raw";
-import imgUrl from "./git-ref.png";
+import imgUrl from "./button-ref.png";
 import { IChallengeConfig } from "../config.ts";
 
 export default {
-  name: "GitHub",
+  name: "(EASY) Button",
   instructions: txt,
   reference: imgUrl,
 } as IChallengeConfig;

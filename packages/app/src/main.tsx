@@ -22,12 +22,12 @@ initBootstrap(new Bootstrap(app_modules), appConfig)
         <RouterProvider router={bootstrap.routerService.router}>
           <DIProvider container={bootstrap.di}>
             <I18nextProvider i18n={bootstrap.i18n}>
-              <ResultPage>
-                <ThemeSchema>
-                  <CssBaseline />
+              <ThemeSchema>
+                <CssBaseline />
+                <ResultPage>
                   <Layout />
-                </ThemeSchema>
-              </ResultPage>
+                </ResultPage>
+              </ThemeSchema>
             </I18nextProvider>
           </DIProvider>
         </RouterProvider>,

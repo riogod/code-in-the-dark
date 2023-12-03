@@ -1,11 +1,11 @@
 import txt from "./data.md?raw";
-import imgUrl from "./todo.png";
+import imgUrl from "./banner-ref.png";
 import { IChallengeConfig } from "../config.ts";
-import svg from "./shopify-logo.svg";
+import banner from "./banner-sbercat.svg";
 
 export default {
-  name: "Sber",
+  name: "(EASY) Banner",
   instructions: txt,
   reference: imgUrl,
-  asserts: [svg],
+  asserts: [banner],
 } as IChallengeConfig;
