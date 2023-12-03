@@ -26,7 +26,9 @@ const Header: FC<IProps> = ({ open, handleAppSettingsOpen }) => {
           justifyContent: "space-between",
         }}
       >
-        <ComunityLogoImage height="50" width="150" />
+        <Box sx={{ pl: 5 }}>
+          <ComunityLogoImage height="50" width="150" />
+        </Box>
         {!gameVM.start && (
           <>
             <Box>
