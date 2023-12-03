@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.6",
     "@mui/material": "^5.14.6",
+    "@mui/styles": "^5.14.19",
     "@todo/core": "0.0.1",
     "@uiw/codemirror-theme-dracula": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",

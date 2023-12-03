@@ -11,10 +11,12 @@ import TextField from "@mui/material/TextField";
 import KeyReturnSVG from "../../assets/key-return.svg?react";
 import { InputAdornment } from "@mui/material";
 import { useRouter } from "react-router5";
+import { useGlitchStyles } from "./glitchStyles.ts";
 
 const RegisterScreen: FC = () => {
   const gameVM = useVM<GameViewModel>(GameViewModel);
   const router = useRouter();
+  const classes = useGlitchStyles();
 
   const [value, setValue] = useState("");
 
@@ -34,22 +36,24 @@ const RegisterScreen: FC = () => {
       gameVM.gameStart(value);
       router.navigate("game");
   }
+  
+  const titleText = String(t("user.enter-name"))
 
   const welcomMessage = (
     <>
       <Typography
+        className={classes.title}
+        data-text={titleText}
         sx={{
           fontFamily: "PressStart2P-Regular",
           fontSize: 45,
-          w: 1,
           display: "flex",
           justifyContent: "center",
           mb: 10,
-          textShadow:
-            "-5px 5px 0px #09AEC8, -10px 10px 0px #01cccc, -15px 15px 0px #00bdbd",
-        }}
+        }
+    }
       >
-        {t("user.enter-name")}
+        {titleText}
       </Typography>
     </>
   );
