@@ -10,6 +10,10 @@ const START_CODE =
   "<html>\n" +
   "  <head>\n" +
   '    <style type="text/css">\n' +
+  "       body {\n" +
+  "          padding: 0;\n" +
+  "          margin: 0;\n" +
+  "       }\n" +
   "    </style>\n" +
   "  </head>\n" +
   "  <body>\n" +
