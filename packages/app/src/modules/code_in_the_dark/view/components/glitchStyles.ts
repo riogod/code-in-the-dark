@@ -1,3 +1,4 @@
+import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles'; 
 
 function random(max: number, min = 0): number {
@@ -16,8 +17,6 @@ const keyframes = () => {
     const result: { [key: string]: {[key: string]: string;}; } = {};
 
     for (let i = 0; i <= 100; i+=5) {
-        console.log('i:', i);
-
         result[`${i}%`] = {
             clip: `rect(${random(100)}px, 9999px, ${random(100)}px, 0)`,
             transform: `skew((${random(100) / 100})deg)`,
@@ -27,9 +26,9 @@ const keyframes = () => {
     return result
 }
 
-const useGlitchStyles = makeStyles(() => ({
+const useGlitchStyles = makeStyles((theme: Theme) => ({
   title: {
-    color: 'white',
+    color: theme.palette.text.primary,
     position: 'relative',
     display: 'block',
     textAlign: 'center',
