@@ -10,6 +10,7 @@ const START_CODE =
   "<html>\n" +
   "  <head>\n" +
   '    <style type="text/css">\n' +
+  '       @font-face { font-family: PressStart2P; src: url("./assets/PressStart2P-Regular.ttf"); }\n' +
   "       body {\n" +
   "         padding: 0;\n" +
   "         margin: 0;\n" +

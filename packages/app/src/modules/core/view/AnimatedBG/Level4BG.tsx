@@ -7,16 +7,23 @@ const Level4BG: FC = () => {
   return (
     <Box
       sx={{
-        height: "100vh",
-        width: "100vw",
+        height: "130vh",
+        width: "130vw",
         position: "fixed",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "start",
+        alignItems: "start",
         backgroundColor: "black",
         opacity: 0.4,
       }}
     >
-      <Lottie animationData={Level4Animation} loop={true} />
+      <Lottie
+        animationData={Level4Animation}
+        loop={true}
+        height="130vh"
+
+        // style={{ height: "100vh" }}
+      />
     </Box>
   );
 };

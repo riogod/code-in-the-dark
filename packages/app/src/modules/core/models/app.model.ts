@@ -6,11 +6,11 @@ import { ThemeMode } from "./app.interface.ts";
 
 @injectable()
 export class AppModel {
-  private _defaultColorMode: ThemeMode =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme:dark)").matches
-      ? "dark"
-      : "light";
+  private _defaultColorMode: ThemeMode = "dark";
+  // window.matchMedia &&
+  // window.matchMedia("(prefers-color-scheme:dark)").matches
+  //   ? "dark"
+  //   : "light";
   private _colorMode: Omit<ThemeMode, "system">;
   private _colorModeSettings: ThemeMode;
   private _notification: string = "";

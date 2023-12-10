@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useVM } from "../../../../ui/hooks/useVM.ts";
 import { GameViewModel } from "../../viewmodels/game.vm.ts";
@@ -28,18 +28,18 @@ const RegisterScreen: FC = () => {
 
   const onEnterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      startHandler()
+      startHandler();
     }
   };
 
   const startHandler = () => {
-      gameVM.gameStart(value);
-      router.navigate("game");
-  }
-  
-  const titleText = String(t("user.enter-name"))
+    gameVM.gameStart(value);
+    router.navigate("game");
+  };
 
-  const welcomMessage = (
+  const titleText = String(t("user.enter-name"));
+
+  const welcomeMessage = (
     <>
       <Typography
         className={classes.glicthDataText}
@@ -50,8 +50,7 @@ const RegisterScreen: FC = () => {
           display: "flex",
           justifyContent: "center",
           mb: 10,
-        }
-    }
+        }}
       >
         {titleText}
       </Typography>
@@ -68,17 +67,17 @@ const RegisterScreen: FC = () => {
         flexDirection: "column",
         justifyContent: "start",
         alignItems: "center",
-        backgroundColor: 'rgba(16, 20, 24, 0.95)',
-          borderRadius: 0,
-          // border: '16px solid #F62DDC',
-          borderWidth: 20,
-          borderStyle: 'solid',
-          borderImage: ' linear-gradient(45deg, slateblue, coral) ',
-          boxShadow: '4px 4px 20px 10px rgba(0, 0, 0, 0.5) inset'
+        backgroundColor: "rgba(16, 20, 24, 0.95)",
+        borderRadius: 0,
+        // border: '16px solid #F62DDC',
+        borderWidth: 20,
+        borderStyle: "solid",
+        borderImage: " linear-gradient(45deg, slateblue, coral) ",
+        boxShadow: "4px 4px 20px 10px rgba(0, 0, 0, 0.5) inset",
       }}
     >
       <CardContent>
-        {welcomMessage}
+        {welcomeMessage}
         <TextField
           fullWidth
           id="filled-start-adornment"
