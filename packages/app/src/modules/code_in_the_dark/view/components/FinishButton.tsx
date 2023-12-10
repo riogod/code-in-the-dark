@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Modal } from "@mui/material";
 import { useRouter } from "react-router5";
+import { useGlitchStyles } from "./glitchStyles";
 
 const style = {
   position: "absolute",
@@ -28,15 +29,18 @@ const FinishButton: FC = () => {
 
   const handleOpenConfirmation = () => setOpenConfirmation(true);
   const handleCloseConfirmation = () => setOpenConfirmation(false);
-
+  const classes = useGlitchStyles();
+  
   const finish = () => {
     router.navigate("result");
   };
-
+  const textQuestion = 'ВЫ УВЕРЕНЫ?'; //TODO refact i18n
   const modalConfirmation = (
     <Modal open={openConfirmation} onClose={handleCloseConfirmation}>
       <Box sx={style}>
         <Typography
+          className={classes.glicthDataText}
+          data-text={textQuestion}
           sx={{
             fontFamily: "PressStart2P-Regular",
             fontSize: 45,
@@ -44,11 +48,9 @@ const FinishButton: FC = () => {
             display: "flex",
             justifyContent: "center",
             mb: 10,
-            textShadow:
-              "-5px 5px 0px #09AEC8, -10px 10px 0px #01cccc, -15px 15px 0px #00bdbd",
           }}
         >
-          ВЫ УВЕРЕНЫ?
+          {textQuestion}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Button

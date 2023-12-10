@@ -10,6 +10,7 @@ body,
 #root {
     height: 100vh;
     width: 100vw;
+    min-width: 720px;
 }
 
 
@@ -27,7 +28,9 @@ input:-webkit-autofill:active {
     font-size: 24px;
     text-shadow: 1px 1px 2px #000000;
 }
-
+.ͼ1k {
+    color: #f98897;
+}
 .ͼ1.cm-focused {
     outline: none;
 }
@@ -66,3 +69,4 @@ input:-webkit-autofill:active {
     }
 }
 
+/* min-width: 720px; */

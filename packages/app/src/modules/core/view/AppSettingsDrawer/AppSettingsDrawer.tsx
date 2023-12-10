@@ -3,7 +3,6 @@ import { IProps } from "./interfaces.tsx";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import ThemeModeToggle from "./components/ThemeModeToggle";
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./components/LanguageSelect";
 import Drawer from "@mui/material/Drawer";
@@ -59,9 +58,9 @@ const AppSettingsDrawer: FC<IProps> = ({ drawerWidth, open, closeHandler }) => {
           flexDirection: "column",
         }}
       >
-        <Box sx={{ p: 2, pl: 3, pr: 3 }}>
+        {/* <Box sx={{ p: 2, pl: 3, pr: 3 }}>
           <ThemeModeToggle />
-        </Box>
+        </Box> */}
         <Box sx={{ p: 2, pl: 3, pr: 3 }}>
           <LanguageSelect />
         </Box>
