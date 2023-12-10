@@ -3,7 +3,6 @@ import { IProps } from "./interfaces.tsx";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import ThemeModeToggle from "./components/ThemeModeToggle";
 import { useTranslation } from "react-i18next";
 import LanguageSelect from "./components/LanguageSelect";
 import Drawer from "@mui/material/Drawer";

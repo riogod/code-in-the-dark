@@ -7,20 +7,22 @@ import { challengesConfig, IChallengeConfig } from "../../../data/config.ts";
 const TICK = 5;
 
 const START_CODE =
-  "<html>\n" +
-  "  <head>\n" +
-  '    <style type="text/css">\n' +
-  '       @font-face { font-family: PressStart2P; src: url("./assets/PressStart2P-Regular.ttf"); }\n' +
-  "       body {\n" +
-  "         padding: 0;\n" +
-  "         margin: 0;\n" +
-  "       }\n" +
-  "    </style>\n" +
-  "  </head>\n" +
-  "  <body>\n" +
-  "\n" +
-  "  </body>\n" +
-  "</html>";
+`<html> 
+  <head> 
+    <style type="text/css">
+      @font-face { 
+        font-family: PressStart2P; 
+        src: url("./assets/PressStart2P-Regular.ttf"); }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+  
+  </body>
+</html>`;
 
 @injectable()
 export class GameModel {

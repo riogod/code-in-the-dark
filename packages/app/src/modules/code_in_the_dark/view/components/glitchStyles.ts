@@ -27,7 +27,7 @@ const keyframes = () => {
 
 const useGlitchStyles = makeStyles(() => 
 createStyles({
-  title: { 
+  glicthDataText: { 
     color: "white",
     position: "relative",
     display: "block",
