@@ -1,4 +1,3 @@
-import { Theme } from '@mui/material';
 import { makeStyles } from '@mui/styles'; 
 
 function random(max: number, min = 0): number {
@@ -20,37 +19,39 @@ const keyframes = () => {
         result[`${i}%`] = {
             clip: `rect(${random(100)}px, 9999px, ${random(100)}px, 0)`,
             transform: `skew((${random(100) / 100})deg)`,
+            textShadow: '-2px 0 #ff00c1',
+            left: '2px'
         }
     }
     
     return result
 }
 
-const useGlitchStyles = makeStyles((theme: Theme) => ({
-  title: {
-    color: theme.palette.text.primary,
+const useGlitchStyles = makeStyles(() => ({
+  glicthDataText: {
+    color: '#fff',
     position: 'relative',
     display: 'block',
     textAlign: 'center',
     '&::before': {
       ...mixinForPsevdo,
-      animation: '$glitch 6s infinite linear alternate-reverse',
+      animation: '$glitchRed 6s infinite linear alternate-reverse',
       textShadow: '-2px 0 #ff00c1',
       left: '2px'
     },
     '&::after': {
       ...mixinForPsevdo,
-      animation: '$glitchTwo 3s infinite linear alternate-reverse',
+      animation: '$glitchBlue 3s infinite linear alternate-reverse',
       textShadow: '-2px 0 #00fff9, 2px 2px #ff00c1',
       left: '-2px'
     },
   },
-  '@keyframes glitch': {
+  '@keyframes glitchRed': {
     ...keyframes()
   },
-  '@keyframes glitchTwo': {
+  '@keyframes glitchBlue': {
     ...keyframes()
-  }
+  },
 }));
 
 

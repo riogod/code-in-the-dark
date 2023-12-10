@@ -42,7 +42,7 @@ const RegisterScreen: FC = () => {
   const welcomMessage = (
     <>
       <Typography
-        className={classes.title}
+        className={classes.glicthDataText}
         data-text={titleText}
         sx={{
           fontFamily: "PressStart2P-Regular",

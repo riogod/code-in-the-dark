@@ -5,9 +5,11 @@ import { GameViewModel } from "../../viewmodels/game.vm.ts";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Progress from "./Progress.tsx";
+import { useGlitchStyles } from "./glitchStyles.ts";
 
 const TimerTicker: FC = () => {
   const gameVM = useVM<GameViewModel>(GameViewModel);
+  const classes = useGlitchStyles();
 
   return (
     <Box
@@ -36,13 +38,13 @@ const TimerTicker: FC = () => {
         }}
       >
         combo!
-        {/*{gameVM.userName}*/}
       </Typography>
       <Typography
+        className={classes.glicthDataText}
+        data-text={gameVM.score}
         sx={{
           fontFamily: "PressStart2P-Regular",
-          fontSize: 80,
-
+          fontSize: 80,                                                                                                 
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -52,16 +54,12 @@ const TimerTicker: FC = () => {
           animationIterationCount: "infinite",
           animationDuration: "1s",
           animationDirection: "alternate",
-          textShadow:
-            "-5px 5px 0px #09AEC8, -10px 10px 0px #01cccc, -15px 15px 0px #00bdbd",
         }}
       >
         {gameVM.score}
       </Typography>
       {gameVM.start && (
-        // <Box sx={{ width: 1, height: 1, b: 0, position: "fixed" }}>
         <Progress />
-        // </Box>
       )}
     </Box>
   );

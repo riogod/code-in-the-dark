@@ -25,6 +25,7 @@ const AnimatedBG: FC<{ children: ReactNode }> = ({ children }) => {
           animation: "AnimateBG 20s ease infinite",
           backgroundImage: "url(" + StartScreenBG + ")",
           backgroundSize: "110%",
+          backgroundColor: "rgba(16, 20, 24, 1)",
         }}
       >
         {children}

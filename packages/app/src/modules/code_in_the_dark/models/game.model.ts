@@ -11,8 +11,8 @@ const START_CODE =
   "  <head>\n" +
   '    <style type="text/css">\n' +
   "       body {\n" +
-  "          padding: 0;\n" +
-  "          margin: 0;\n" +
+  "         padding: 0;\n" +
+  "         margin: 0;\n" +
   "       }\n" +
   "    </style>\n" +
   "  </head>\n" +
